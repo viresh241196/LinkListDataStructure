@@ -27,8 +27,11 @@ public class MyLinkList {
         INode tempNode= head;
         while(tempNode.getNext()!=null){
             myNodes.append(tempNode.getKey());
+            System.out.println(myNodes);
             if(!tempNode.equals(tail))myNodes.append("->");
             tempNode = tempNode.getNext();
         }
+        myNodes.append(tempNode.getKey());
+        System.out.println(myNodes);
     }
 }
