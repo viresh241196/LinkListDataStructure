@@ -51,4 +51,8 @@ public class MyLinkList {
         myNode.setNext(newNode);
         newNode.setNext(tempNode);
     }
+
+    public void pop() {
+        this.head = this.head.getNext();
+    }
 }
