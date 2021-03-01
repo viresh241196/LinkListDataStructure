@@ -45,6 +45,7 @@ public class MyLinkedListTest {
         MyLinkList myLinkList = new MyLinkList();
         myLinkList.add(myFirstNode);
         myLinkList.append(myThirdNode);
+        myLinkList.printMyNodes();
         myLinkList.insertNode(myFirstNode, mySecondNode);
         myLinkList.printMyNodes();
         boolean result = myLinkList.head.equals(myFirstNode) &&
@@ -123,4 +124,27 @@ public class MyLinkedListTest {
                 myLinkList.tail.equals(myThirdNode);
         Assert.assertTrue(result);
     }
+    @Test
+    public void given3NumberWhenDeleteToSpecificNodePrintLinkedList() {
+        MyNode<Integer> myFirstNode = new MyNode<>(56);
+        MyNode<Integer> mySecondNode = new MyNode<>(30);
+        MyNode<Integer> myThirdNode = new MyNode<>(40);
+        MyNode<Integer> myForthNode = new MyNode<>(70);
+        MyLinkList myLinkList = new MyLinkList();
+        myLinkList.add(myFirstNode);
+        myLinkList.append(mySecondNode);
+        myLinkList.append(myThirdNode);
+        myLinkList.append(myForthNode);
+        myLinkList.printMyNodes();
+        boolean check = myLinkList.search(myThirdNode);
+        if (check)
+            myLinkList.deleteNode(myThirdNode);
+        myLinkList.printMyNodes();
+        boolean result = myLinkList.head.equals(myFirstNode) &&
+                myLinkList.head.getNext().equals(mySecondNode) &&
+                myLinkList.tail.equals(myForthNode);
+        Assert.assertTrue(result);
+    }
+
+
 }

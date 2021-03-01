@@ -22,13 +22,13 @@ public class MyLinkList {
         }
     }
 
-    public void printMyNodes(){
+    public void printMyNodes() {
         StringBuffer myNodes = new StringBuffer("My nodes: ");
-        INode tempNode= head;
-        while(tempNode.getNext()!=null){
+        INode tempNode = head;
+        while (tempNode.getNext() != null) {
             myNodes.append(tempNode.getKey());
             System.out.println(myNodes);
-            if(!tempNode.equals(tail))myNodes.append("->");
+            if (!tempNode.equals(tail)) myNodes.append("->");
             tempNode = tempNode.getNext();
         }
         myNodes.append(tempNode.getKey());
@@ -36,7 +36,7 @@ public class MyLinkList {
     }
 
     public void append(INode newNode) {
-        if(this.head==null)
+        if (this.head == null)
             this.head = newNode;
         if (this.tail == null)
             this.tail = newNode;
@@ -46,7 +46,7 @@ public class MyLinkList {
         }
     }
 
-    public void insertNode(INode myNode,INode newNode) {
+    public void insertNode(INode myNode, INode newNode) {
         INode tempNode = myNode.getNext();
         myNode.setNext(newNode);
         newNode.setNext(tempNode);
@@ -58,7 +58,7 @@ public class MyLinkList {
 
     public void popLast() {
         INode tempNode = head;
-        while(!tempNode.getNext().equals(tail)) {
+        while (!tempNode.getNext().equals(tail)) {
             tempNode = tempNode.getNext();
         }
         this.tail = tempNode;
@@ -67,12 +67,23 @@ public class MyLinkList {
 
     public boolean search(INode key) {
         INode tempNode = head;
-        while(tempNode !=null && tempNode.getNext()!=null) {
-            if (tempNode.getKey()==key.getKey()) {
+        while (tempNode != null && tempNode.getNext() != null) {
+            if (tempNode.getKey() == key.getKey()) {
                 return true;
             }
             tempNode = tempNode.getNext();
         }
         return false;
     }
+
+    public void deleteNode(INode myNode) {
+        INode tempNode = head;
+        INode previousNode = null;
+        while(tempNode != null && tempNode.getKey() != myNode.getKey()) {
+            previousNode = tempNode;
+            tempNode = tempNode.getNext();
+        }
+        previousNode.setNext(tempNode.getNext());
+    }
+
 }
