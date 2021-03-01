@@ -36,6 +36,7 @@ public class MyLinkedListTest {
                 myLinkList.tail.equals(myThirdNode);
         Assert.assertTrue(result);
     }
+
     @Test
     public void given3NumberWhenInsertedBetweenLinkedList() {
         MyNode<Integer> myFirstNode = new MyNode<>(56);
@@ -44,7 +45,7 @@ public class MyLinkedListTest {
         MyLinkList myLinkList = new MyLinkList();
         myLinkList.add(myFirstNode);
         myLinkList.append(myThirdNode);
-        myLinkList.insertNode(myFirstNode,mySecondNode);
+        myLinkList.insertNode(myFirstNode, mySecondNode);
         myLinkList.printMyNodes();
         boolean result = myLinkList.head.equals(myFirstNode) &&
                 myLinkList.head.getNext().equals(mySecondNode) &&
@@ -68,6 +69,7 @@ public class MyLinkedListTest {
                 myLinkList.tail.equals(myThirdNode);
         Assert.assertTrue(result);
     }
+
     @Test
     public void given3NumberWhenDeletedLastNodePrintLinkedList() {
         MyNode<Integer> myFirstNode = new MyNode<>(56);
@@ -90,13 +92,35 @@ public class MyLinkedListTest {
         MyNode<Integer> myFirstNode = new MyNode<>(56);
         MyNode<Integer> mySecondNode = new MyNode<>(30);
         MyNode<Integer> myThirdNode = new MyNode<>(70);
-        MyNode<Integer> found = new MyNode<>(0);
         MyLinkList myLinkList = new MyLinkList();
         myLinkList.add(myFirstNode);
         myLinkList.append(mySecondNode);
         myLinkList.append(myThirdNode);
         myLinkList.printMyNodes();
         boolean result = myLinkList.search(mySecondNode);
+        Assert.assertTrue(result);
+    }
+
+    @Test
+    public void given3NumberWhenInsertedToSpecificNodePrintLinkedList() {
+        MyNode<Integer> myFirstNode = new MyNode<>(56);
+        MyNode<Integer> mySecondNode = new MyNode<>(30);
+        MyNode<Integer> myThirdNode = new MyNode<>(70);
+        MyNode<Integer> newNode = new MyNode<>(40);
+        MyLinkList myLinkList = new MyLinkList();
+        myLinkList.add(myFirstNode);
+        myLinkList.append(mySecondNode);
+        myLinkList.append(myThirdNode);
+        myLinkList.printMyNodes();
+        boolean check = myLinkList.search(mySecondNode);
+        if (check)
+            myLinkList.insertNode(mySecondNode, newNode);
+        myLinkList.printMyNodes();
+        INode newPosition = myLinkList.head.getNext();
+        boolean result = myLinkList.head.equals(myFirstNode) &&
+                myLinkList.head.getNext().equals(mySecondNode) &&
+                newPosition.getNext().equals(newNode) &&
+                myLinkList.tail.equals(myThirdNode);
         Assert.assertTrue(result);
     }
 }
