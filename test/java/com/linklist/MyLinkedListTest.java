@@ -98,7 +98,7 @@ public class MyLinkedListTest {
         myLinkList.append(mySecondNode);
         myLinkList.append(myThirdNode);
         myLinkList.printMyNodes();
-        boolean result = myLinkList.search(mySecondNode);
+        boolean result = myLinkList.searchNode(mySecondNode);
         Assert.assertTrue(result);
     }
 
@@ -113,7 +113,7 @@ public class MyLinkedListTest {
         myLinkList.append(mySecondNode);
         myLinkList.append(myThirdNode);
         myLinkList.printMyNodes();
-        boolean check = myLinkList.search(mySecondNode);
+        boolean check = myLinkList.searchNode(mySecondNode);
         if (check)
             myLinkList.insertNode(mySecondNode, newNode);
         myLinkList.printMyNodes();
@@ -136,7 +136,7 @@ public class MyLinkedListTest {
         myLinkList.append(myThirdNode);
         myLinkList.append(myForthNode);
         myLinkList.printMyNodes();
-        boolean check = myLinkList.search(myThirdNode);
+        boolean check = myLinkList.searchNode(myThirdNode);
         if (check)
             myLinkList.deleteNode(myThirdNode);
         myLinkList.printMyNodes();

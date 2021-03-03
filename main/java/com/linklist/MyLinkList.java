@@ -1,6 +1,6 @@
 package com.linklist;
 
-public class MyLinkList {
+public class MyLinkList<K> {
     public INode head;
     public INode tail;
 
@@ -35,7 +35,7 @@ public class MyLinkList {
         System.out.println(myNodes);
     }
 
-    public void append(INode newNode) {
+    public void append(INode<K> newNode) {
         if (this.head == null)
             this.head = newNode;
         if (this.tail == null)
@@ -65,7 +65,19 @@ public class MyLinkList {
         tempNode.setNext(null);
     }
 
-    public boolean search(INode key) {
+    public INode<K> search(K key) {
+        INode<K> tempNode = head;
+        while (tempNode != null && tempNode.getNext() != null) {
+            if (tempNode.getKey().equals(key)) {
+                return tempNode;
+            }
+            tempNode = tempNode.getNext();
+        }
+        return null;
+    }
+
+
+    public boolean searchNode(INode key) {
         INode tempNode = head;
         while (tempNode != null && tempNode.getNext() != null) {
             if (tempNode.getKey() == key.getKey()) {
@@ -79,11 +91,19 @@ public class MyLinkList {
     public void deleteNode(INode myNode) {
         INode tempNode = head;
         INode previousNode = null;
-        while(tempNode != null && tempNode.getKey() != myNode.getKey()) {
+        while (tempNode != null && tempNode.getKey() != myNode.getKey()) {
             previousNode = tempNode;
             tempNode = tempNode.getNext();
         }
         previousNode.setNext(tempNode.getNext());
     }
 
+    public void printMyNode() {
+        System.out.println("My nodes:" + head);
+    }
+
+    @Override
+    public String toString() {
+        return "MyLinkedListNodes{" + head + "}";
+    }
 }
